@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="screens-jvm">
+    <output-path>$PROJECT_DIR$/compose-navigator-example/screens/build/libs</output-path>
+    <root id="archive" name="screens-jvm.jar" />
+  </artifact>
+</component>

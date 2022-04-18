@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="11">
+      <module name="compose-navigator-demo" target="11" />
+      <module name="compose-navigator-demo.main" target="11" />
+      <module name="compose-navigator-demo.test" target="11" />
+      <module name="compose-navigator-example.main" target="11" />
+      <module name="compose-navigator-example.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
