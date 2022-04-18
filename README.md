@@ -1,6 +1,27 @@
 # compose navigation
 
-该文档是 Compose Multiplatform 教程的一部分 [navigation](https://github.com/JetBrains/compose-jb/tree/master/tutorials/Navigation)
+## Decompose 文档
+
+- 快速入门 [getting-started](learn-decompose/getting-started/1-overview.md)
+- 安装 [installation](learn-decompose/getting-started/2-installation.md)
+- 组件概述 [component](learn-decompose/component/1-overview.md)
+    - 生命周期 [lifecycle](learn-decompose/component/2-lifecycle.md)
+    - 状态保存 [state presevation](learn-decompose/component/3-state-preservation.md)
+    - 实例保留 [instance retaining](learn-decompose/component/4-intance-retaining.md)
+    - 返回按钮处理 [back button handling](learn-decompose/component/5-back-btn-handling.md)
+    - 自定义组件上下文 [custom ComponentContext](learn-decompose/component/6-custom-component-context.md)
+- 路由概述 [router](learn-decompose/router/1-overview.md)
+    - 导航 [navigation](learn-decompose/router/2-navigation.md)
+    - 深链接 [deep linking](learn-decompose/router/3-deep-linking.md)
+    - 浏览器历史 [web browser history](learn-decompose/router/4-web-browser-history.md)
+- 扩展 [extensions](learn-decompose/extensions/1-overview.md)
+    - Compose 的扩展 [extensions for compose](learn-decompose/extensions/2-extensions-for-compose.md)
+    - Android Views 的扩展 [extensions for compose](learn-decompose/extensions/3-extensions-for-android-views.md)
+
+--------
+
+以下文档是 Compose Multiplatform
+教程的一部分 [navigation](https://github.com/JetBrains/compose-jb/tree/master/tutorials/Navigation)
 
 ## Navigation 导航
 
