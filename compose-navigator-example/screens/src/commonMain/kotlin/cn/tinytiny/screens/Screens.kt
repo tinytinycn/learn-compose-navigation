@@ -1,11 +1,7 @@
 package cn.tinytiny
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
@@ -15,13 +11,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.jetbrains.Children
-import com.arkivanov.decompose.extensions.compose.jetbrains.animation.child.*
+import com.arkivanov.decompose.extensions.compose.jetbrains.animation.child.childAnimation
+import com.arkivanov.decompose.extensions.compose.jetbrains.animation.child.fade
+import com.arkivanov.decompose.extensions.compose.jetbrains.animation.child.plus
+import com.arkivanov.decompose.extensions.compose.jetbrains.animation.child.scale
 import com.arkivanov.decompose.router.pop
 import com.arkivanov.decompose.router.push
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
-import cn.tinytiny.rememberRouter
 
+/**
+ * 列表UI-子组件
+ * */
 @Composable
 fun List(onItemClick: (String) -> Unit) {
     val items = remember { List(100) { "Item $it" } }
@@ -39,6 +40,9 @@ fun List(onItemClick: (String) -> Unit) {
     }
 }
 
+/**
+ * 详情页UI-子组件
+ * */
 @Composable
 fun Details(text: String, onBack: () -> Unit) {
     Column(modifier = Modifier.padding(16.dp)) {
@@ -52,14 +56,21 @@ fun Details(text: String, onBack: () -> Unit) {
     }
 }
 
+/**
+ * 主页面UI
+ * */
 @Composable
 fun Main() {
-    val router =
-        rememberRouter<Screen>(
-            initialConfiguration = { Screen.List },
-            handleBackButton = true
-        )
+    // 1 在开始Compose之前，创建root ComponentContext
+    // 2 定义路由的初始配置、返回按钮处理逻辑等
+    // 默认显示应该是列表Screen.list 子组件
+    val router = rememberRouter<Screen>(
+        initialConfiguration = { Screen.List },
+        handleBackButton = true
+    )
 
+    // 3 在 Composable UI 子组件之间导航
+    //   Router 提供 RouterState 作为 Value<RouterState> ，可以在 Composable 组件中观察到。这使得跟随 Router 切换 child Composable 组件成为可能。
     Children(
         routerState = router.state,
         animation = childAnimation(fade() + scale())
@@ -71,6 +82,10 @@ fun Main() {
     }
 }
 
+/**
+ * 组件配置-密封类
+ * Router 使用配置来检查哪些组件应该是活动的，哪些应该被销毁。在客户端，配置允许您使用适当的输入参数来实例化组件。
+ * */
 sealed class Screen : Parcelable {
 
     @Parcelize

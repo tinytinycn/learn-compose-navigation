@@ -26,6 +26,7 @@ fun <C : Parcelable> rememberRouter(
     configurationClass: KClass<out C>,
     handleBackButton: Boolean = false
 ): Router<C, Any> {
+    // 1 获取组件上下文，返回一个默认组件上下文的实现 DefaultComponentContext
     val context = rememberComponentContext()
 
     return remember {
@@ -37,6 +38,10 @@ fun <C : Parcelable> rememberRouter(
     }
 }
 
+/**
+ * 内联函数 rememberRouter()
+ * 内联对性能的预期影响是微不足道的。内联最适合具有函数类型参数的函数
+ * */
 @Composable
 inline fun <reified C : Parcelable> rememberRouter(
     noinline initialConfiguration: () -> C,
@@ -50,8 +55,12 @@ inline fun <reified C : Parcelable> rememberRouter(
         handleBackButton = handleBackButton
     )
 
+/**
+ * 获取组件上下文 componentContext
+ * */
 @Composable
 private fun rememberComponentContext(): ComponentContext {
+    // LifecycleRegistry 接口的默认实现可以使用相应的构建器函数进行实例化
     val lifecycle = rememberLifecycle()
     val stateKeeper = rememberStateKeeper()
     val backPressedDispatcher = LocalBackPressedDispatcher.current ?: BackPressedDispatcher()
