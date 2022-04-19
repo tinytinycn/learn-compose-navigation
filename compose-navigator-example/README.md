@@ -91,3 +91,6 @@ fun Main() {
 }
 ```
 
+5. demo效果
+
+![navigation-demo](img/navigation-demo.gif)
